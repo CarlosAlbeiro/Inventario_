@@ -1,0 +1,9 @@
+Instalar node.js
+Crear una carpeta en visual 
+Abrir la terminal de viaul escribir este comando para iniciar el proyecto de node.js
+      npm init -y 
+
+Instalar express y dotenv
+      npm i express
+      npm i dotenv
+
