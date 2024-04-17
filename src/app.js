@@ -27,7 +27,8 @@ app.use((req, res, next) => {
 
 //Declaracion de rutina tipo get ('nombrede la ruta',async *respuesta asincrona*, (req,res *parametros de entreda y salida*) *Funcion flecha*)
 
-app.get("/creaciongrupoUsuarios", async (req, res) => {
+//Grupo de usuarios CRUD
+app.get("/listarGrupoUsuarios", async (req, res) => {
   try {
     //Respuesta tipo JSON para facilitar el traspaso de datos
     res.status(200).json({respuesta: "crear Grupo Usuarios"});
@@ -36,7 +37,35 @@ app.get("/creaciongrupoUsuarios", async (req, res) => {
   }
 });
 
-app.get("/creacionUsuarios", async (req, res) => {
+app.get("/crearGrupoUsuarios", async (req, res) => {
+  try {
+    //Respuesta tipo JSON para facilitar el traspaso de datos
+    res.status(200).json({respuesta: "crear Grupo Usuarios"});
+  } catch (error) {
+    res.status(500).json({error: "Error del servidor"});
+  }
+});
+
+app.get("/actualizarGrupoUsuarios", async (req, res) => {
+  try {
+    //Respuesta tipo JSON para facilitar el traspaso de datos
+    res.status(200).json({respuesta: "crear Grupo Usuarios"});
+  } catch (error) {
+    res.status(500).json({error: "Error del servidor"});
+  }
+});
+
+app.get("/eliminarGrupoUsuarios", async (req, res) => {
+  try {
+    //Respuesta tipo JSON para facilitar el traspaso de datos
+    res.status(200).json({respuesta: "crear Grupo Usuarios"});
+  } catch (error) {
+    res.status(500).json({error: "Error del servidor"});
+  }
+});
+
+//Usuarios CRUD
+app.get("/listarUsuarios", async (req, res) => {
   try {
     //Respuesta tipo JSON para facilitar el traspaso de datos
     res.status(200).json({respuesta: "crear Usuarios"});
@@ -45,7 +74,35 @@ app.get("/creacionUsuarios", async (req, res) => {
   }
 });
 
-app.get("/creacionProductos", async (req, res) => {
+app.get("/crearUsuarios", async (req, res) => {
+  try {
+    //Respuesta tipo JSON para facilitar el traspaso de datos
+    res.status(200).json({respuesta: "crear Usuarios"});
+  } catch (error) {
+    res.status(500).json({error: "Error del servidor"});
+  }
+});
+
+app.get("/actualizarUsuarios", async (req, res) => {
+  try {
+    //Respuesta tipo JSON para facilitar el traspaso de datos
+    res.status(200).json({respuesta: "crear Usuarios"});
+  } catch (error) {
+    res.status(500).json({error: "Error del servidor"});
+  }
+});
+
+app.get("/eliminarUsuarios", async (req, res) => {
+  try {
+    //Respuesta tipo JSON para facilitar el traspaso de datos
+    res.status(200).json({respuesta: "crear Usuarios"});
+  } catch (error) {
+    res.status(500).json({error: "Error del servidor"});
+  }
+});
+
+//Prodcutos CRUD
+app.get("/listarProductos", async (req, res) => {
   try {
     //Respuesta tipo JSON para facilitar el traspaso de datos
     res.status(200).json({respuesta: "crear Productos"});
@@ -54,7 +111,35 @@ app.get("/creacionProductos", async (req, res) => {
   }
 });
 
-app.get("/creacionCategorias", async (req, res) => {
+app.get("/crearProductos", async (req, res) => {
+  try {
+    //Respuesta tipo JSON para facilitar el traspaso de datos
+    res.status(200).json({respuesta: "crear Productos"});
+  } catch (error) {
+    res.status(500).json({error: "Error del servidor"});
+  }
+});
+
+app.get("/actualizarProductos", async (req, res) => {
+  try {
+    //Respuesta tipo JSON para facilitar el traspaso de datos
+    res.status(200).json({respuesta: "crear Productos"});
+  } catch (error) {
+    res.status(500).json({error: "Error del servidor"});
+  }
+});
+
+app.get("/eliminarProductos", async (req, res) => {
+  try {
+    //Respuesta tipo JSON para facilitar el traspaso de datos
+    res.status(200).json({respuesta: "crear Productos"});
+  } catch (error) {
+    res.status(500).json({error: "Error del servidor"});
+  }
+});
+
+//Categorias CRUD
+app.get("/listarCategorias", async (req, res) => {
   try {
     //Respuesta tipo JSON para facilitar el traspaso de datos
     res.status(200).json({respuesta: "crear Categorias"});
@@ -63,7 +148,35 @@ app.get("/creacionCategorias", async (req, res) => {
   }
 });
 
-app.get("/creacionProveedores", async (req, res) => {
+app.get("/crearCategorias", async (req, res) => {
+  try {
+    //Respuesta tipo JSON para facilitar el traspaso de datos
+    res.status(200).json({respuesta: "crear Categorias"});
+  } catch (error) {
+    res.status(500).json({error: "Error del servidor"});
+  }
+});
+
+app.get("/actualizarCategorias", async (req, res) => {
+  try {
+    //Respuesta tipo JSON para facilitar el traspaso de datos
+    res.status(200).json({respuesta: "crear Categorias"});
+  } catch (error) {
+    res.status(500).json({error: "Error del servidor"});
+  }
+});
+
+app.get("/eliminarCategorias", async (req, res) => {
+  try {
+    //Respuesta tipo JSON para facilitar el traspaso de datos
+    res.status(200).json({respuesta: "crear Categorias"});
+  } catch (error) {
+    res.status(500).json({error: "Error del servidor"});
+  }
+});
+
+//Proveedores CRUD
+app.get("/listarProveedores", async (req, res) => {
   try {
     //Respuesta tipo JSON para facilitar el traspaso de datos
     res.status(200).json({respuesta: "crear Proveedores"});
@@ -71,6 +184,35 @@ app.get("/creacionProveedores", async (req, res) => {
     res.status(500).json({error: "Error del servidor"});
   }
 });
+
+app.get("/crearProveedores", async (req, res) => {
+  try {
+    //Respuesta tipo JSON para facilitar el traspaso de datos
+    res.status(200).json({respuesta: "crear Proveedores"});
+  } catch (error) {
+    res.status(500).json({error: "Error del servidor"});
+  }
+});
+
+app.get("/actualizarProveedores", async (req, res) => {
+  try {
+    //Respuesta tipo JSON para facilitar el traspaso de datos
+    res.status(200).json({respuesta: "crear Proveedores"});
+  } catch (error) {
+    res.status(500).json({error: "Error del servidor"});
+  }
+});
+
+app.get("/eliminarProveedores", async (req, res) => {
+  try {
+    //Respuesta tipo JSON para facilitar el traspaso de datos
+    res.status(200).json({respuesta: "crear Proveedores"});
+  } catch (error) {
+    res.status(500).json({error: "Error del servidor"});
+  }
+});
+
+
 
 
 
@@ -144,7 +286,6 @@ app.post("/crear_regalo", async (req, res) => {
     res.status(500).json({error: "Error interno del servidor" + error});
   }
 });
-
 
 app.listen(puerto, () => {
   console.log(`Servidor iniciado en: ${puerto}`);
