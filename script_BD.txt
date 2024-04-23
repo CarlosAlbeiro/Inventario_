@@ -1,0 +1,85 @@
+/*Este script permite crear toda la base da datos*/
+
+CREATE DATABASE sis_inventario;
+
+/*DROP DATABASE sis_inventario;*/
+
+USE sis_inventario;
+
+CREATE TABLE grupo_Usuarios(
+	ID_grupo INT PRIMARY KEY auto_increment NOT NULL,
+    nombre_Grupo VARCHAR(255) NOT NULL,
+    fecha_Creacion DATETIME NOT NULL,
+    estado BOOLEAN
+);
+
+CREATE TABLE categorias(
+	ID_categoria INT PRIMARY KEY auto_increment NOT NULL,
+    nombre_Categoria VARCHAR(255) NOT NULL,
+    fecha_Creacion DATETIME NOT NULL,
+    estado BOOLEAN
+);
+
+CREATE TABLE proveedores(
+	ID_proveedor INT PRIMARY KEY auto_increment NOT NULL,
+    nombre_Proveedor VARCHAR(255) NOT NULL,
+    telefono VARCHAR(255) NOT NULL,
+    empresa VARCHAR(255) NOT NULL,
+    fecha_Creacion DATETIME NOT NULL,
+    estado BOOLEAN
+);
+
+CREATE TABLE usuarios(
+	ID_usuario INT PRIMARY KEY auto_increment NOT NULL,
+    nombre VARCHAR(255) NOT NULL,
+    usuario VARCHAR(255) NOT NULL,
+    clave VARCHAR(255) NOT NULL,
+    ID_grupo INT,
+    fecha_Creacion DATETIME NOT NULL,
+    estado BOOLEAN,
+	FOREIGN KEY (ID_grupo) REFERENCES grupo_Usuarios(ID_grupo)
+);
+
+CREATE TABLE productos(
+	ID_producto INT PRIMARY KEY auto_increment NOT NULL,
+    referencia VARCHAR(255) NOT NULL,
+    cantidad INT(255) NOT NULL,
+    precio_Compra float NOT NULL,
+    precio_Venta float NOT NULL,
+    ID_categoria INT,
+    ID_proveedor INT,
+    fecha_Creacion DATETIME NOT NULL,
+    estado BOOLEAN,
+	FOREIGN KEY (ID_categoria) REFERENCES categorias(ID_categoria),
+    FOREIGN KEY (ID_proveedor) REFERENCES proveedores(ID_proveedor)
+);
+
+CREATE TABLE facturas(
+	ID_factura INT PRIMARY KEY auto_increment NOT NULL,
+	fecha DATETIME NOT NULL,
+    ID_usuario INT,
+    valor float,
+	FOREIGN KEY (ID_usuario) REFERENCES usuarios(ID_usuario)
+);
+
+CREATE TABLE fac_pro(
+	ID_relacion INT PRIMARY KEY auto_increment NOT NULL,
+    ID_producto INT,
+    ID_factura INT,
+	FOREIGN KEY (ID_factura) REFERENCES facturas(ID_factura)
+);
+
+CREATE TABLE pedidos(
+	ID_pedido INT PRIMARY KEY auto_increment NOT NULL,
+	fecha DATETIME NOT NULL,
+    ID_proveedor INT,
+    valor float,
+	FOREIGN KEY (ID_proveedor) REFERENCES proveedores(ID_proveedor)
+);
+
+CREATE TABLE ped_pro(
+	ID_relacion INT PRIMARY KEY auto_increment NOT NULL,
+    ID_producto INT,
+    ID_pedido INT,
+	FOREIGN KEY (ID_pedido) REFERENCES pedidos(ID_pedido)
+);
