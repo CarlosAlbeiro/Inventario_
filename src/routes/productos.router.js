@@ -11,7 +11,7 @@ const productos = express.Router();
 // Listar productos
 productos.get("/listarProductos", async (req, res) => {
   try {
-    conexion.query("SELECT * FROM categorias", (err, results) => {
+    conexion.query("SELECT * FROM productos", (err, results) => {
       if (err) {
         console.error("Error al ejecutar la consulta:", err);
         res.status(500).json({error: "Error al ejecutar la consulta"});
@@ -34,19 +34,19 @@ productos.get("/listarProductos", async (req, res) => {
 
 // Crear productos
 productos.post("/crearProductos", async (req, res) => {
-  const {nombre_Categoria} = req.body;
+  const {referencia,cantidad,precio_Compra,precio_Venta,ID_categoria,ID_proveedor} = req.body;
   try {
     conexion.query(
-      "INSERT INTO categorias (nombre_Categoria, fecha_Creacion, estado) VALUES (?, NOW(), ?)",
-      [nombre_Categoria, true],
+      "INSERT INTO productos (referencia,cantidad,precio_Compra,precio_Venta,ID_categoria,ID_proveedor) VALUES (?,?,?,?,?,?,NOW(),?)",
+      [referencia,cantidad,precio_Compra,precio_Venta,ID_categoria,ID_proveedor,true],
       (err, result) => {
         if (err) {
-          console.error("Error al insertar la nueva categoría:", err);
-          res.status(500).json({error: "Error al insertar la nueva categoría"});
+          console.error("Error al insertar el nuevo producto:", err);
+          res.status(500).json({error: "Error al insertar el nuevo producto"});
           return;
         }
 
-        console.log("ID de la nueva categoría insertada:", result.insertId);
+        console.log("ID del producto nuevo insertado:", result.insertId);
         res.json({message: "Inserción exitosa", insertId: result.insertId});
       }
     );
@@ -58,15 +58,15 @@ productos.post("/crearProductos", async (req, res) => {
 
 // Actualizar productos
 productos.post("/actualizarProductos", async (req, res) => {
-  const {id_Categoria, nombre_Categoria} = req.body;
+  const {referencia,cantidad,precio_Compra,precio_Venta,ID_categoria,ID_proveedor} = req.body;
   try {
     conexion.query(
-      "UPDATE categorias SET nombre_Categoria = ? WHERE ID_categoria = ?",
-      [nombre_Categoria, id_Categoria],
+      "UPDATE productos SET referencia = ? , cantidad = ?,precio_Compra = ? , precio_Venta = ?,ID_categoria = ? , ID_proveedor = ? WHERE ID_producto = ?",
+      [referencia,cantidad,precio_Compra,precio_Venta,ID_categoria,ID_proveedor],
       (err, result) => {
         if (err) {
-          console.error("Error al actualizar la categoría:", err);
-          res.status(500).json({error: "Error al actualizar la categoría"});
+          console.error("Error al actualizar el producto:", err);
+          res.status(500).json({error: "Error al actualizar el producto"});
           return;
         }
 
@@ -88,12 +88,12 @@ productos.post("/deshabilitarProductos", async (req, res) => {
   const {id_Categoria} = req.body;
   try {
     conexion.query(
-      "UPDATE categorias SET estado = ? WHERE ID_categoria = ?",
+      "UPDATE productos SET estado = ? WHERE ID_producto = ?",
       [false, id_Categoria],
       (err, result) => {
         if (err) {
-          console.error("Error al deshabilitar la categoría:", err);
-          res.status(500).json({error: "Error al deshabilitar la categoría"});
+          console.error("Error al deshabilitar el producto:", err);
+          res.status(500).json({error: "Error al deshabilitar el prodcuto"});
           return;
         }
 
@@ -115,12 +115,12 @@ productos.post("/eliminarProductos", async (req, res) => {
   const {id_Categoria} = req.body;
   try {
     conexion.query(
-      "DELETE FROM categorias WHERE ID_categoria = ?",
+      "DELETE FROM productos WHERE ID_producto = ?",
       [id_Categoria],
       (err, result) => {
         if (err) {
-          console.error("Error al eliminar la categoría:", err);
-          res.status(500).json({error: "Error al eliminar la categoría"});
+          console.error("Error al eliminar el producto:", err);
+          res.status(500).json({error: "Error al eliminar el producto"});
           return;
         }
 
