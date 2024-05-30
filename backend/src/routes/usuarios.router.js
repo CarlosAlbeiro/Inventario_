@@ -32,6 +32,8 @@ usuarios.get("/listarUsuarios", async (req, res) => {
 
 usuarios.post("/login", async (req, res) => {
   const {usuario, clave} = req.body;
+  console.log("Usuario ->",usuario);
+  console.log("Clave ->",clave);
 
   try {
     conexion.query(

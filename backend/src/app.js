@@ -17,7 +17,7 @@ const app = express();
 app.use(express.json());
 
 //Declaramos el puerto en el que trabajaremos
-const puerto = process.env.PORT || 3000;
+const puerto = process.env.PORT || 3500;
 
 // Configuración para permitir cualquier origen (CORS)
 app.use((req, res, next) => {
