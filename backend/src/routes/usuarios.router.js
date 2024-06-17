@@ -6,6 +6,29 @@ import bcrypt from "bcryptjs";
 //Llamamos el metodo propio de express Router para poder declarar rutas y usarlas en el archivo principal
 const usuarios = express.Router();
 
+usuarios.get("/tablas", async (req, res) => {
+  try {
+    conexion.query("SHOW TABLES FROM sis_inventario", (err, results) => {
+      if (err) {
+        console.error("Error al ejecutar la consulta:", err);
+        res.status(500).json({error: "Error al ejecutar la consulta"});
+        return;
+      }
+
+      if (results.length > 0) {
+        console.log("Resultados de la consulta:", results);
+        res.json(results);
+      } else {
+        console.log("No se encontraron resultados");
+        res.status(404).json({message: "No se encontraron resultados"});
+      }
+    });
+  } catch (error) {
+    console.error("Error interno del servidor:", error);
+    res.status(500).json({error: "Error interno del servidor"});
+  }
+});
+
 //Usuarios CRUD
 usuarios.get("/listarUsuarios", async (req, res) => {
   try {
