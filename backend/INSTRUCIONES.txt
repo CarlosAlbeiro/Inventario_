@@ -6,4 +6,5 @@ Abrir la terminal de viaul escribir este comando para iniciar el proyecto de nod
 Instalar express y dotenv
       npm i express
       npm i dotenv
+      npm i mysql
 
